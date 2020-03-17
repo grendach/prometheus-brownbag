@@ -1,0 +1,6 @@
+Дякую всім хто прийшов, слухав і задавав питання
+Деякі корисні посилання:
+1. Загальна документація: https://prometheus.io/docs/introduction/overview/
+2. Написати власний експортер: https://prometheus.io/docs/instrumenting/writing_exporters/
+3. PHP бібліотека для Prometheus: https://github.com/endclothing/prometheus_client_php
+4. Prometheus best practices: https://prometheus.io/docs/practices/naming/

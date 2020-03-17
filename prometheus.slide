@@ -1,0 +1,71 @@
+#+theme=black
+
+Prometheus brownbag
+
+prepared by
+Dmytro Grendach
+
+
+* Agenda
+.image images/logo.png 150 150
+1. What is Prometheus
+2. Prometheus main features
+3. What about logs?
+4. Prometheus architecture
+5. How we use Prometheus in EAT.ch
+6. Nearest future
+7. Life show
+
+
+*  What is Prometheus
+.image images/prom-github.png 200 200
+- Open-source systems monitoring and alerting toolkit originally built at SoundCloud
+- Prometheus joined the Cloud Native Computing Foundation in 2016 as the second hosted project, after Kubernetes.
+- It is now a standalone open source project and maintained independently of any company
+
+
+* Bjorn 
+.image images/Bjorn.png 530 300
+
+* Prometheus main features
+
+- It has data model with time series data identified by **metric* name and **key/value* pairs
+  <metric name>{<label name>=<label value>, ...}
+- Has it's own query language - **PromQL*
+  http_requests_total{job="apiserver", handler="/api/comments"}
+- **PULL-based* monitoring system
+- Pushing is also possible via **Pushgateway*, but... 
+- Pushgateway is not capable of turning Prometheus into a push-based monitoring system
+- Monitoring targets are discovered via **service* **discovery* or static config
+
+
+* How to feed logs into Prometheus?
+.image images/notpossible.png 300 300
+
+Short answer: Don't! 
+
+Use something like the ELK stack instead.
+Prometheus is a system to collect and process metrics, not an event logging system.
+
+  
+* Prometheus architecture
+- **Server* - scrapes and stores time series data
+- **Client* **libraries* - instrumenting application code (Go, Python, PHP, Java, Node.js, C, Bash)
+- **Pushgateway* - for supporting short-lived jobs which can be pushed to a Pushgateway,  then it exposes these metrics to Prometheus (something like cache)
+- **Alertmanager* - takes care of deduplicating, grouping, and routing alerts to the correct receiver integrations such as email, PagerDuty, or OpsGenie
+- Various support tools
+    
+
+* Prometheus architecture
+.image images/architecture.png 500 750
+
+
+* Prometheus in EAT.ch
+.image images/eatch1.png 
+
+
+* Our goal
+.image images/next-step.png 
+
+* Life show
+.image images/wakeup.gif
